@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';\
+import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result({ Key? key }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
-    );
+    return Center(
+        child: Text(
+      'You did it',
+      style: TextStyle(fontSize: 30),
+    ));
   }
 }

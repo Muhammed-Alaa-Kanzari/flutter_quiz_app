@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import "./quiz.dart" ;
+import "./quiz.dart";
+import "./result.dart";
 
 void main() {
   runApp(MyApp());
@@ -24,7 +25,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final questions = const [
+    final _questions = const [
       {
         'questionText': 'What\'s your favorite color ?',
         'answers': ['Black', 'Red', 'Blue', 'Green']
@@ -43,13 +44,12 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('My First App'),
         ),
-        body: _questionIndex < questions.length
-            ?
-            : Center(
-                child: Text(
-                'You did it',
-                style: TextStyle(fontSize: 30),
-              )),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                questions: _questions,
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex)
+            : Result(),
       ),
       theme: ThemeData(primarySwatch: Colors.yellow),
     );
