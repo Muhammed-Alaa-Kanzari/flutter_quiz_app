@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './question.dart';
+import "./quiz.dart" ;
 
 void main() {
   runApp(MyApp());
@@ -24,36 +24,32 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      'What\'s your favorite color ?',
-      'What\'s your favorite animal ?'
+    final questions = const [
+      {
+        'questionText': 'What\'s your favorite color ?',
+        'answers': ['Black', 'Red', 'Blue', 'Green']
+      },
+      {
+        'questionText': 'What\'s your favorite animal ?',
+        'answers': ['Tiger', 'Dog', 'Cat', 'Rabbit']
+      },
+      {
+        'questionText': 'Who\'s your favorite instructor  ?',
+        'answers': ['Me', 'Me', 'Me', 'Me']
+      },
     ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('My First App'),
         ),
-        body: Column(
-          children: [
-            Question(
-              questions[_questionIndex],
-            ),
-            RaisedButton(
-              child: Text('Answer 1'),
-              onPressed: _answerQuestion,
-            ),
-            RaisedButton(
-              child: Text('Answer 2'),
-              onPressed: () => print("salam"),
-            ),
-            RaisedButton(
-              child: Text('Answer 3'),
-              onPressed: () {
-                print('hello');
-              },
-            ),
-          ],
-        ),
+        body: _questionIndex < questions.length
+            ?
+            : Center(
+                child: Text(
+                'You did it',
+                style: TextStyle(fontSize: 30),
+              )),
       ),
       theme: ThemeData(primarySwatch: Colors.yellow),
     );
